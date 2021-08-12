@@ -1,9 +1,13 @@
 package com.example.android.crudinnocv.viewmodel
 
 import android.app.Application
+import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.example.android.crudinnocv.data.InnocvDatabase
+import com.example.android.crudinnocv.models.UserItem
 import com.example.android.crudinnocv.repository.InnocvRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -13,6 +17,18 @@ import java.lang.Exception
 class InnocvViewModel(application: Application): ViewModel() {
     private val database = InnocvDatabase.getDatabase(application)
     private val repo = InnocvRepository(database)
+
+    var userList: List<UserItem> = database.innocvDao.getUsers()
+
+    init {
+        viewModelScope.launch{
+            try {
+                userList = repo.users
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
 
     fun getUsers() {
         CoroutineScope(Dispatchers.IO).launch {

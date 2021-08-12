@@ -1,6 +1,6 @@
 package com.example.android.crudinnocv.network
 
-import com.example.android.crudinnocv.models.Users
+import com.example.android.crudinnocv.models.UserItem
 import com.example.android.crudinnocv.utils.Constants.BASE_URL
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -24,7 +24,7 @@ val retrofitRestClient = Retrofit.Builder()
 interface InnocvApiService {
 
     @GET("api/User")
-    suspend fun getUsers(): List<Users>
+    suspend fun getUsers():List<UserItem>
 
 }
 

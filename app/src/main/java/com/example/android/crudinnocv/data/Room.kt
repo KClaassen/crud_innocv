@@ -2,16 +2,17 @@ package com.example.android.crudinnocv.data
 
 import android.content.Context
 import androidx.room.*
-import com.example.android.crudinnocv.models.Users
+import com.example.android.crudinnocv.models.UserItem
 
 @Dao
 interface InnocvDao {
     // Loads all users
-    @Query("SELECT  * FROM users ORDER BY id ASC")
-    suspend fun getUsers() : List<Users>
+    @Query("SELECT  * FROM useritem ORDER BY useritem ASC")
+    fun getUsers() : List<UserItem>
 }
 
-@Database(entities = [Users::class], version = 1, exportSchema = false)
+@Database(entities = [UserItem::class], version = 2, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class InnocvDatabase: RoomDatabase() {
     abstract val innocvDao: InnocvDao
 
