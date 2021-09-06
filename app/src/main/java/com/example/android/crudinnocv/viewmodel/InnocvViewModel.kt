@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.android.crudinnocv.data.InnocvDatabase
-import com.example.android.crudinnocv.models.UserItem
 import com.example.android.crudinnocv.repository.InnocvRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,12 +17,13 @@ class InnocvViewModel(application: Application): ViewModel() {
     private val database = InnocvDatabase.getDatabase(application)
     private val repo = InnocvRepository(database)
 
-    var userList: List<UserItem> = database.innocvDao.getUsers()
+    var userList = database.innocvDao.getUsers()
 
     init {
         viewModelScope.launch{
             try {
-                userList = repo.users
+                userList //= repo.users
+                Log.d("viewmodel users", "${userList}")
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -33,7 +33,7 @@ class InnocvViewModel(application: Application): ViewModel() {
     fun getUsers() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                repo.getUsers()
+                userList //repo.getUsers()
             } catch (e: Exception) {
                 e.printStackTrace()
             }

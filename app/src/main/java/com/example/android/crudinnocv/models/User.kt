@@ -8,16 +8,9 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 @Entity
-data class UserItem (
+data class User (
         @PrimaryKey
-        @SerializedName("User")
-        val useritem: List<User>
-) : Parcelable {
-
-    @Parcelize
-    data class User(
         val id: Int,
         val name: String,
         val birthdate: String
-    ) : Parcelable
-}
+): Parcelable

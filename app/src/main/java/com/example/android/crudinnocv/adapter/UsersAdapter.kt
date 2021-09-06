@@ -5,12 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.crudinnocv.R
-import com.example.android.crudinnocv.models.UserItem
+import com.example.android.crudinnocv.models.User
 import kotlinx.android.synthetic.main.user_item.view.*
 
 class UsersAdapter(): RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
 
-    private var users: List<UserItem.User> = listOf()
+    private var users: List<User> = listOf()
 
     class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 

@@ -6,6 +6,9 @@
 
     <data>
         <variable
+            name="user"
+            type="com.example.android.crudinnocv.models.User" />
+        <variable
             name="viewmodel"
             type="com.example.android.crudinnocv.viewmodel.InnocvViewModel" />
     </data>
@@ -27,17 +30,26 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.123" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/users_recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+        <TextView
+            android:layout_width="105dp"
+            android:layout_height="82dp"
+            android:layout_marginStart="152dp"
+            android:layout_marginTop="200dp"
+            android:text="@{user.name}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            tools:listitem="@layout/user_item"/>
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/users_recyclerview"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="100dp"-->
+<!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView"-->
+<!--            tools:listitem="@layout/user_item"/>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
