@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.android.crudinnocv.adapter.UsersAdapter
 import com.example.android.crudinnocv.databinding.ActivityMainBinding
 import com.example.android.crudinnocv.network.InnocvApiService
 import com.example.android.crudinnocv.utils.Constants
@@ -42,9 +43,9 @@ class MainActivity : AppCompatActivity() {
 
         //binding.viewmodel = viewModel
 
-//        val adapter = UsersAdapter()
-//        users_recyclerview.adapter = adapter
-//        users_recyclerview.layoutManager = LinearLayoutManager(this)
+        val adapter = UsersAdapter()
+        users_recyclerview.adapter = adapter
+        users_recyclerview.layoutManager = LinearLayoutManager(this)
 
 
         getUsers()
