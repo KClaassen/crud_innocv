@@ -17,7 +17,7 @@ val service = Retrofit.Builder()
 interface InnocvApiService {
 
     @GET("api/User")
-    suspend fun getUsers(): Call<String>
+    suspend fun getUsers(): List<User>
 
 }
 

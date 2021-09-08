@@ -15,15 +15,15 @@ import java.lang.Exception
 
 class InnocvViewModel(application: Application): ViewModel() {
     private val database = InnocvDatabase.getDatabase(application)
-    private val repo = InnocvRepository(database)
+    private val repository = InnocvRepository(database)
 
     var userList = database.innocvDao.getUsers()
 
     init {
         viewModelScope.launch{
             try {
-                userList //= repo.users
-                Log.d("viewmodel users", "${userList}")
+               userList = repository.users
+                Log.d("viewmodel users", "$userList")
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -33,7 +33,7 @@ class InnocvViewModel(application: Application): ViewModel() {
     fun getUsers() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                userList //repo.getUsers()
+                repository.getUsers()
             } catch (e: Exception) {
                 e.printStackTrace()
             }
