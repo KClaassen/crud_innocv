@@ -17,13 +17,12 @@ class InnocvViewModel(application: Application): ViewModel() {
     private val database = InnocvDatabase.getDatabase(application)
     private val repository = InnocvRepository(database)
 
-    var userList = database.innocvDao.getUsers()
+    val userList get() = repository.users
 
     init {
         viewModelScope.launch{
             try {
-               userList = repository.users
-                Log.d("viewmodel users", "$userList")
+               getUsers()
             } catch (e: Exception) {
                 e.printStackTrace()
             }
